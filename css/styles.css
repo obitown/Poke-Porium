@@ -1,0 +1,9 @@
+.pokemonBorder{
+    margin-top: 10px;
+    border-top: solid 1px;
+}
+
+.pokemonName{
+    font-size: large;
+    font-weight: bold;
+}

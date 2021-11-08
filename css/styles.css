@@ -1,9 +1,30 @@
-.pokemonBorder{
-    margin-top: 10px;
-    border-top: solid 1px;
+:root{
+    --button-background: #FFB8B8;
+    --button-border: #B20101;
 }
 
-.pokemonName{
-    font-size: large;
-    font-weight: bold;
+.page-title{
+    font-variant: small-caps;
+    font-weight: 600;
+    text-align: center;
+    border-bottom: 2px solid #000;
+}
+
+.button-class{
+    display: flex;
+    padding: 10px;
+    margin: 5px;
+    background-color: var(--button-background);
+    border: 1px solid var(--button-border);
+    border-bottom: 3px solid #00000073;
+    border-right: 1px solid #00000073;
+    box-shadow:0 0 15px 0 rgba(0, 0, 0, 0.3);
+    font-variant: small-caps;
+    transition: 0.5s;
+    width: 250px;
+}
+
+.button-class:hover{
+    cursor: pointer;
+    opacity: 0.5;
 }

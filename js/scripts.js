@@ -68,32 +68,27 @@ let pokemonRepository = (function (){
     function getAll() {
         return pokemonList;
     }
+    function addListItem(pokemon) {
+        
+        let pokemonList = document.querySelector('.pokemon-list');
+        let listPokemon = document.createElement('li');
+        let button = document.createElement('button');
+        
+        button.innerText = pokemon.name;
+        button.classList.add('button-class');
+        
+        listPokemon.appendChild(button);
+        pokemonList.appendChild(listPokemon);
+    }
+
     return {
-        add : add(),
-        getAll: getAll()
+        add: add,
+        getAll: getAll,
+        addListItem: addListItem
     };
+    
 })();
 
-pokemonRepository.getAll.forEach(function(pokemon){
-    if (pokemonCount === 1) {
-        document.write("<div class='pokemonBorder'>")
-    }  
-    //list and highlights pokemon if > 1.5
-    if (pokemon.height > 1.5) {
-        document.write("<div class='pokemonName'>" + pokemon.name + "</div>")
-        document.write("<div style='background-color:#ff9c9c'>Height: " + pokemon.height + " -Wow, that's big!</div>")
-        document.write("<div>Type(s): " + pokemon.types + "</div>")
-    }
-    //list and highlight pokemon if < 0.6
-    else if (pokemon.height < 0.6) {
-        document.write("<div class='pokemonName'>" + pokemon.name + "</div>")
-        document.write("<div style='background-color:#9cbfff'>Height: " + pokemon.height + " -Awh, so tiny!</div>")
-        document.write("<div>Type(s): " + pokemon.types + "</div>")
-    }
-    //list all other of pokemon
-    else {
-        document.write("<div class='pokemonName'>" + pokemon.name + "</div>")
-        document.write("<div>Height: " + pokemon.height + "</div>")
-        document.write("<div>Type(s): " + pokemon.types + "</div>")
-    }
+pokemonRepository.getAll().forEach(function(pokemon){
+    pokemonRepository.addListItem(pokemon);
 });

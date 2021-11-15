@@ -78,6 +78,8 @@ let pokemonRepository = (function (){
         
         listPokemon.appendChild(button);
         pokemonList.appendChild(listPokemon);
+        
+        //adds pokemon name to console on click
         button.addEventListener('click', function(){
             showDetails(pokemon)
         });

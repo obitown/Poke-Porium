@@ -1,4 +1,3 @@
-let pokemonCount = 1;
 let pokemonRepository = (function (){
     let pokemonList = [
         {
@@ -79,12 +78,18 @@ let pokemonRepository = (function (){
         
         listPokemon.appendChild(button);
         pokemonList.appendChild(listPokemon);
+        button.addEventListener('click', function(){
+            showDetails(pokemon)
+        });
     }
-
+    function showDetails(pokemon){
+        console.log(pokemon.name);
+    }
     return {
         add: add,
         getAll: getAll,
-        addListItem: addListItem
+        addListItem: addListItem,
+        showDetails: showDetails
     };
     
 })();

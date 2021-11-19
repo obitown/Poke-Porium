@@ -5,9 +5,11 @@ let pokemonRepository = (function (){
     function add(pokemon){
         pokemonList.push(pokemon);
     };
+    
     function getAll() {
         return pokemonList;
     };
+
     function addListItem(pokemon) {
         
         let pokemonList = document.querySelector('.pokemon-list');
@@ -25,11 +27,13 @@ let pokemonRepository = (function (){
             showDetails(pokemon)
         });
     };
+
     function showDetails(pokemon){
         loadDetails(pokemon).then(function (){
             console.log(pokemon);
         });
     };
+
     function loadList() {
         return fetch(apiUrl).then(function (response) {
             return response.json();
@@ -45,6 +49,7 @@ let pokemonRepository = (function (){
             console.error(e);
         })
     };
+
     function loadDetails(item) {
         let url = item.detailsUrl;
         return fetch(url).then(function(response){

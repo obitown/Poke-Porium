@@ -1,8 +1,21 @@
 :root{
-    --button-background: #FFB8B8;
-    --button-border: #B20101;
-}
 
+    --background-color: #395faa;
+    --button-background: #dddddd;
+    --button-border: #470000;
+}
+body{
+    background-color: var(--background-color);
+}
+.pokemon-list{
+    float: center;
+    padding: 15px;
+    width: max-content;
+    margin: auto;
+    list-style-type: none;
+    border: solid 3px;
+    background-color: #ffcb05;
+}
 .page-title{
     font-variant: small-caps;
     font-weight: 600;
@@ -22,9 +35,60 @@
     font-variant: small-caps;
     transition: 0.5s;
     width: 250px;
-}
+    display:table-cell;
+
+}   
 
 .button-class:hover{
     cursor: pointer;
-    opacity: 0.5;
+    border: var(--background-color) solid 8px;
+}
+
+#modal-container {
+    position: fixed;
+    padding: 20px;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    
+    /* to show it above other content */
+    z-index: 999; 
+    
+    /* to allow scrolling if the screen is not high enough*/
+    overflow: auto; 
+    
+    /* this is used to center the modal */
+    display: none;
+    text-align: center;
+  }
+  
+#modal-container.is-visible {
+    display: block;
+}
+  
+  
+.modal {
+    margin: auto;
+    display: inline-block;
+    box-sizing: border-box;
+    background: #fff;
+    padding: 15px;
+    width: 450px;
+    max-width: 700px;
+    text-align: left;
+    font-variant: small-caps;
+    border: var(--background-color) solid 3px;
+}
+  
+.modal-close {
+    float: right;
+    -webkit-appearance: none;
+    border: 0;
+    background: none;
+    color: #777;
+    text-decoration: underline;
+    cursor: pointer;
 }

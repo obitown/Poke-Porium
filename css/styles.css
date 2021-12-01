@@ -12,7 +12,7 @@ body{
     padding: 15px;
     width: max-content;
     margin: auto;
-    list-style-type: none;
+
     border: solid 3px;
     background-color: #ffcb05;
 }
@@ -20,7 +20,6 @@ body{
     font-variant: small-caps;
     font-weight: 600;
     text-align: center;
-    border-bottom: 2px solid #000;
 }
 
 .button-class{
@@ -81,6 +80,7 @@ body{
     text-align: left;
     font-variant: small-caps;
     border: var(--background-color) solid 3px;
+    margin-top: 80px;
 }
   
 .modal-close {
@@ -91,4 +91,7 @@ body{
     color: #777;
     text-decoration: underline;
     cursor: pointer;
+}
+main {
+    margin-top: 75px;
 }

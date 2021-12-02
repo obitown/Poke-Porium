@@ -17,16 +17,19 @@ let pokemonRepository = (function (){
         let button = document.createElement('button');
         
         button.innerText = pokemon.name;
+        button.classList.add('button-close');
         button.classList.add( 'btn','button-class');
-        button.setAttribute('data-toggle', 'modal')
+        button.setAttribute('data-toggle', 'modal');
+        button.setAttribute('data-target', '#modal-container')
         listPokemon.classList.add('list-group-item', 'border-0');
-
-        //adds pokemon name to console on click
-        button.addEventListener('click', function(){
-            showDetails(pokemon)
-        });
+        
         listPokemon.appendChild(button);
         pokemonList.appendChild(listPokemon);
+
+        button.addEventListener('click', function(){
+            showDetails(pokemon);
+        });
+        
     };
 
     function showDetails(pokemon){
@@ -88,6 +91,7 @@ let pokemonRepository = (function (){
         modalTitle.append(nameElement);
         modalBody.append(imgElement);
         modalBody.append(heightElement)
+        modalBody.append(typesElement);
 
 
     };

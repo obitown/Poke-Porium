@@ -19,6 +19,7 @@
 
 <body>
   <header>
+    <!--Navbar-->
     <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
       <a class="navbar-brand" href="#">Poke-Porium</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -37,23 +38,26 @@
       </div>
     </nav>
   </header>
- 
+ <!--Pokemon List-->
   <ul class="pokemon-list list-unstyled"></ul>
   
   
    
-  
-  <div class="modal fade" id="modal-container" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+  <!--Modal-->
+  <div class="modal fade" id="modal-container" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            close
+          <button type="button" class="close" data-dismiss="modal" aria-label="close">
+            <span aria-hidden="true">x</span>
           </button>
         </div>
         <div class="modal-body">
           ...
+        </div>
+        <div class="moday-foorter">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">close</button>
         </div>
       </div>
     </div>

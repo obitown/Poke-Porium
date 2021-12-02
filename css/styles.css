@@ -8,13 +8,13 @@ body{
     background-color: var(--background-color);
 }
 .pokemon-list{
-    float: center;
+    
     padding: 15px;
     width: max-content;
     margin: auto;
-
     border: solid 3px;
     background-color: #ffcb05;
+    margin-top: 65px;
 }
 .page-title{
     font-variant: small-caps;

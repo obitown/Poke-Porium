@@ -1,7 +1,6 @@
 let pokemonRepository = (function (){
     let pokemonList = [];
     let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
-    let modalContainer = document.querySelector('#modal-container');
 
     function add(pokemon){
         pokemonList.push(pokemon);
@@ -18,15 +17,16 @@ let pokemonRepository = (function (){
         let button = document.createElement('button');
         
         button.innerText = pokemon.name;
-        button.classList.add('button-class');
-        
-        listPokemon.appendChild(button);
-        pokemonList.appendChild(listPokemon);
-        
+        button.classList.add( 'btn','button-class');
+        button.setAttribute('data-toggle', 'modal')
+        listPokemon.classList.add('list-group-item', 'border-0');
+
         //adds pokemon name to console on click
         button.addEventListener('click', function(){
             showDetails(pokemon)
         });
+        listPokemon.appendChild(button);
+        pokemonList.appendChild(listPokemon);
     };
 
     function showDetails(pokemon){
@@ -65,71 +65,41 @@ let pokemonRepository = (function (){
     };
 
     function showModal(pokemon){
-        //clear existing modal
-        modalContainer.innerHTML = '';
-        
-        let modal = document.createElement('div');
-        modal.classList.add('modal');
-      
-        //add new modal content
-        let closeButtonElement = document.createElement('button');
-        closeButtonElement.classList.add('modal-close');
-        closeButtonElement.innerText = 'Close';
-        closeButtonElement.addEventListener('click', hideModal);
-      
-        let titleElement = document.createElement('h1');
-        titleElement.innerText = pokemon.name;
+        let modalBody = $(".modal-body");
+        let modalTitle = $(".modal-title");
 
-        let imgElement = document.createElement('img');
-        imgElement.src = pokemon.imageUrl;
+        //clear existing content of the modal
+        modalTitle.empty();
+        modalBody.empty();
+
+        //creat name element
+        let nameElement = $("<h1>" + pokemon.name + "</h1>");
+
+        let imgElement = $('<img>')
+        imgElement.attr('src', pokemon.imageUrl);
       
-        let contentElement = document.createElement('p');
-        contentElement.innerText = ('Height:') + pokemon.height;
+        let heightElement = $('<p>' + 'Height: ' + pokemon.height + '</p>');
 
         let typesElement = document.createElement('p');
         typesElement.innerText = ('Type(s): ') + pokemon.types;
 
 
       
-        modal.appendChild(closeButtonElement);
-        modal.appendChild(titleElement);
-        modal.appendChild(imgElement);
-        modal.appendChild(typesElement);
-        modal.appendChild(contentElement);
-        modalContainer.appendChild(modal);
-      
-        modalContainer.classList.add('is-visible');
+        modalTitle.append(nameElement);
+        modalBody.append(imgElement);
+        modalBody.append(heightElement)
+
+
     };
-
-    function hideModal(){
-        let modalContainer = document.querySelector('#modal-container');
-        modalContainer.classList.remove('is-visible');    
-    };
-
-    //hide modal on click outsid modal
-    modalContainer.addEventListener('click', (e)=>{
-        //since this is also triggered when clicking inside the modal
-        //we only want to close if the user clicks directly on the overlay
-        let target = e.target;
-        if (target === modalContainer){
-          hideModal();
-        };
-    })
-
-    //hide modal when keydown=Esc
-    window.addEventListener('keydown', (e)=> {
-        let modalContainer = document.querySelector('#modal-container');
-        if(e.key === 'Escape' && modalContainer.classList.contains('is-visible')){
-          hideModal();
-        }
-    });
 
     return {
         add: add,
         getAll: getAll,
         addListItem: addListItem,
+        loadList: loadList,
+        loadDetails: loadDetails,
         showDetails: showDetails,
-        loadList: loadList
+        showModal: showModal
     };
     
     

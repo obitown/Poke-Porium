@@ -1,6 +1,6 @@
 :root{
 
-    --background-color: #395faa;
+    --background-color: #5888e9;
     --button-background: #dddddd;
     --button-border: #470000;
 }
@@ -12,12 +12,8 @@ body{
 }
 .pokemon-list{
     display: grid;
-    padding: 15px;
-    width: max-content;
-    margin: auto;
-    border: solid 3px;
     background-color: #ffcb05;
-    margin-top: 65px;
+    margin-top: 55px; 
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 .page-title{
@@ -44,13 +40,13 @@ body{
 
 .button-class:hover{
     cursor: pointer;
-    border: var(--background-color) solid 8px;
+    border: var(--background-color) solid 3px;
 }
 
 #modal-container {
     background: rgba(0, 0, 0, 0.5);
     /* this is used to center the modal */
-    text-align: center;
+    /* text-align: center; */
     display: none;
 }
 
@@ -78,3 +74,12 @@ main {
     margin-top: 75px;
 }
 
+/*search bar float right of nav*/
+.topnav_right {
+    float: right;
+}
+
+/* navbar style */
+.myNavbar{
+    background-color: var(--background-color);
+}

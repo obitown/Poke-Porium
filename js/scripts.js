@@ -59,7 +59,8 @@ let pokemonRepository = (function (){
         return fetch(url).then(function(response){
             return response.json();
         }).then(function (details){
-            item.imageUrl = details.sprites.front_default;
+            item.defaultImageUrl = details.sprites.front_default;
+            item.shinyImageUrl = details.sprites.front_shiny;
             item.height = details.height;
             item.types = details.types;
         }).catch(function(e){
@@ -71,6 +72,12 @@ let pokemonRepository = (function (){
         let modalBody = $(".modal-body");
         let modalTitle = $(".modal-title");
 
+        //seperates the types if more than 1
+        let typeMap = pokemon.types;
+        let map = typeMap.map(function (x) {
+            return x.type.name;
+        });
+
         //clear existing content of the modal
         modalTitle.empty();
         modalBody.empty();
@@ -78,23 +85,43 @@ let pokemonRepository = (function (){
         //creat name element
         let nameElement = $("<h1>" + pokemon.name + "</h1>");
 
-        let imgElement = $('<img>')
-        imgElement.attr('src', pokemon.imageUrl);
+        let imgElement = $('<img>');
+        imgElement.attr('src', pokemon.defaultImageUrl);
+
+        let shinyImgElement = $('<img>');
+        shinyImgElement.attr('src', pokemon.shinyImageUrl);
       
         let heightElement = $('<p>' + 'Height: ' + pokemon.height + '</p>');
 
         let typesElement = document.createElement('p');
-        typesElement.innerText = ('Type(s): ') + pokemon.types;
-
-
+        typesElement.innerText = ('Type(s): ') + map;
       
         modalTitle.append(nameElement);
         modalBody.append(imgElement);
+        modalBody.append(shinyImgElement);
         modalBody.append(heightElement)
         modalBody.append(typesElement);
-
-
     };
+
+    //search bar
+    let search = document.querySelector('#searchBar');
+    
+    search.addEventListener('input', () => {
+        const input = document.querySelector('.pokemon-list');
+        const filter = search.value.toUpperCase();
+        const li = input.getElementsByTagName('li');
+
+        //hides pokemon that dont match search
+        for (let i = 0; i < li.length; i++) {
+            const button = li[i].getElementsByTagName('button')[0];
+            const value = button.textContent || button.innerText;
+            if (value.toUpperCase().indexOf(filter) > -1){
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
+            }
+        }
+    });
 
     return {
         add: add,

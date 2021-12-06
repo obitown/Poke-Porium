@@ -4,11 +4,11 @@ let pokemonRepository = (function (){
 
     function add(pokemon){
         pokemonList.push(pokemon);
-    };
+    }
     
     function getAll() {
         return pokemonList;
-    };
+    }
 
     function addListItem(pokemon) {
         
@@ -30,13 +30,13 @@ let pokemonRepository = (function (){
             showDetails(pokemon);
         });
         
-    };
+    }
 
     function showDetails(pokemon){
         loadDetails(pokemon).then(function (){
            showModal(pokemon);
         });
-    };
+    }
 
     function loadList() {
         return fetch(apiUrl).then(function (response) {
@@ -52,7 +52,7 @@ let pokemonRepository = (function (){
         }).catch(function (e){
             console.error(e);
         })
-    };
+    }
 
     function loadDetails(item) {
         let url = item.detailsUrl;
@@ -66,11 +66,11 @@ let pokemonRepository = (function (){
         }).catch(function(e){
             console.log(e);
         });
-    };
+    }
 
     function showModal(pokemon){
-        let modalBody = $(".modal-body");
-        let modalTitle = $(".modal-title");
+        let modalBody = $('.modal-body');
+        let modalTitle = $('.modal-title');
 
         //seperates the types if more than 1
         let typeMap = pokemon.types;
@@ -83,7 +83,7 @@ let pokemonRepository = (function (){
         modalBody.empty();
 
         //creat name element
-        let nameElement = $("<h1>" + pokemon.name + "</h1>");
+        let nameElement = $('<h1>' + pokemon.name + '</h1>');
 
         let imgElement = $('<img>');
         imgElement.attr('src', pokemon.defaultImageUrl);
@@ -101,7 +101,7 @@ let pokemonRepository = (function (){
         modalBody.append(shinyImgElement);
         modalBody.append(heightElement)
         modalBody.append(typesElement);
-    };
+    }
 
     //search bar
     let search = document.querySelector('#searchBar');
@@ -116,9 +116,9 @@ let pokemonRepository = (function (){
             const button = li[i].getElementsByTagName('button')[0];
             const value = button.textContent || button.innerText;
             if (value.toUpperCase().indexOf(filter) > -1){
-                li[i].style.display = "";
+                li[i].style.display = '';
             } else {
-                li[i].style.display = "none";
+                li[i].style.display = 'none';
             }
         }
     });

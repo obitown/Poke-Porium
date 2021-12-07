@@ -63,6 +63,7 @@ let pokemonRepository = (function (){
             item.shinyImageUrl = details.sprites.front_shiny;
             item.height = details.height;
             item.types = details.types;
+            item.id = details.id;
         }).catch(function(e){
             console.log(e);
         });
@@ -83,7 +84,7 @@ let pokemonRepository = (function (){
         modalBody.empty();
 
         //creat name element
-        let nameElement = $('<h1>' + pokemon.name + '</h1>');
+        let nameElement = $('<h1>' + pokemon.id + '. ' + pokemon.name + '</h1>');
 
         let imgElement = $('<img>');
         imgElement.attr('src', pokemon.defaultImageUrl);

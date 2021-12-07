@@ -1,35 +1,34 @@
 :root{
 
-    --background-color: #5888e9;
+    --background-color: #ffcb05;
+    --foreground-color: #2a75bb;
     --button-background: #dddddd;
     --button-border: #470000;
 }
 body{
-    background-color: var(--background-color);
+    background-color: var(--foreground-color);
 }
 .list-group-item{
     background-color: transparent;
 }
 .pokemon-list{
     display: grid;
-    background-color: #ffcb05;
-    margin-top: 55px; 
+    margin-top: 110px; 
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    padding-left: 75px;
 }
 
 .button-class{
-    display: flex;
-    padding: 10px;
-    margin: 5px;
+    display: table-cell;
+    padding: 15px;
     background-color: var(--button-background);
-    border: 1px solid var(--button-border);
+    border: 1px solid var(--foreground-color);
     border-bottom: 3px solid #00000073;
     border-right: 1px solid #00000073;
     box-shadow:0 0 15px 0 rgba(0, 0, 0, 0.3);
     font-variant: small-caps;
     transition: 0.5s;
     width: 150px;
-    display:table-cell;
 
 }   
 
@@ -72,4 +71,17 @@ main {
 /* navbar style */
 .myNavbar{
     background-color: var(--background-color);
+    border-bottom: 1px solid #000000;
+}
+
+.navbar-brand{
+    width: auto;
+    height: auto;
+}
+
+@media only screen and (max-width: 450px){
+    .navbar-brand{
+        width: 50%;
+        height: auto;
+    }
 }
